@@ -61,7 +61,8 @@ trait HttpClient extends TestRunnerHttpClient:
          |      "identifiers": [{ "key": "ExciseNumber", "value": "GBWK001234569" }]
          |    }
          |  ]
-         |}""".stripMargin
+         |}""".stripMargin,
+        "Content-Type" -> "application/json"
       )
     ).header("Authorization")
       .getOrElse(throw new RuntimeException("No Authorization Header retrieved from auth login api"))
@@ -80,10 +81,10 @@ trait HttpClient extends TestRunnerHttpClient:
 
   def deleteRefData(refData: String): StandaloneWSResponse = await(delete(s"$testOnlyHost/$refData"))
 
-  def fetchWineOps(authToken: String): StandaloneWSResponse = await(
-    get(s"$host/oracle/wine-operations", "Authorization" -> authToken)
+  def fetchRefData(authToken: String, refData: String): StandaloneWSResponse = await(
+    get(s"$host/$refData", "Authorization" -> authToken)
   )
 
-  def fetchRefData(authToken: String): StandaloneWSResponse = await(
-    get(s"$host/oracle/packaging-types", "Authorization" -> authToken)
+  def postRefData(refData: String, bodyAsJson: String, authToken: String): StandaloneWSResponse = await(
+    post(s"$host/$refData", bodyAsJson, "Authorization" -> authToken, "Content-Type" -> "application/json")
   )
