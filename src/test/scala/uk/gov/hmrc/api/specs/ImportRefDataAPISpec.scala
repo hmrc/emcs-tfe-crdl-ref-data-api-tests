@@ -326,9 +326,9 @@ class ImportRefDataAPISpec extends BaseSpec, HttpClient, BeforeAndAfterAll:
       val deleteCodelists_response = deleteRefData("codelists")
       deleteCodelists_response.status shouldBe 200
 
-//      val authToken       = fetchAuthToken(): String
-//      val refDataResponse = fetchRefData(authToken, "oracle/wine-operations")
-//      refDataResponse.status        shouldBe 200
-//      refDataResponse.body[JsValue] shouldBe Json.arr()
+      val authToken       = fetchAuthToken(): String
+      val refDataResponse = fetchRefData(authToken, "oracle/epc-codes")
+      refDataResponse.status        shouldBe 200
+      refDataResponse.body[JsValue] shouldBe Json.arr()
     }
   }
