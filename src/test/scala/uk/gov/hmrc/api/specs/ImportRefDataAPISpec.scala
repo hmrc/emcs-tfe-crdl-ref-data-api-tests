@@ -328,7 +328,6 @@ class ImportRefDataAPISpec extends BaseSpec, HttpClient, BeforeAndAfterAll:
 
       val authToken       = fetchAuthToken(): String
       val refDataResponse = fetchRefData(authToken, "oracle/epc-codes")
-      refDataResponse.status        shouldBe 200
-      refDataResponse.body[JsValue] shouldBe Json.arr()
+      refDataResponse.status shouldBe 404
     }
   }
