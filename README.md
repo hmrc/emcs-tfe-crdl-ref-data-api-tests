@@ -1,8 +1,7 @@
-**This is the template README. Please update this with project specific content.**
 
 # emcs-tfe-crdl-ref-data-api-tests
 
-<SERVICE_NAME> API tests.
+EMCS-TFE-CRDL-REF-DATA API tests.
 
 ## Pre-requisites
 
@@ -17,7 +16,7 @@ docker run --rm -d -p 27017:27017 --name mongo percona/percona-server-mongodb:6.
 Start `<SERVICE_MANAGER_PROFILE>` services as follows:
 
 ```bash
-sm2 --start <SERVICE_MANAGER_PROFILE>
+sm2 --start EMCS_TFE_CRDL
 ```
 
 ## Tests
