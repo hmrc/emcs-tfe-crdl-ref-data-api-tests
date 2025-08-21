@@ -1,4 +1,3 @@
-
 # emcs-tfe-crdl-ref-data-api-tests
 
 EMCS-TFE-CRDL-REF-DATA API tests.
@@ -13,7 +12,7 @@ Start Mongo Docker container as follows:
 docker run --rm -d -p 27017:27017 --name mongo percona/percona-server-mongodb:6.0
 ```
 
-Start `<SERVICE_MANAGER_PROFILE>` services as follows:
+Start `EMCS_TFE_CRDL` services as follows:
 
 ```bash
 sm2 --start EMCS_TFE_CRDL
