@@ -46,22 +46,39 @@ trait HttpClient extends TestRunnerHttpClient:
       .withHttpHeaders(headers*)
       .delete()
 
+  def createInternalAuthToken(): StandaloneWSResponse =
+    await(
+      post(
+        "http://localhost:8470/test-only/token",
+        s"""{
+           |  "token": "crdl-cache-token",
+           |  "principal": "emcs-tfe-crdl-reference-data",
+           |  "permissions": [{
+           |    "resourceType": "crdl-cache",
+           |    "resourceLocation": "*",
+           |    "actions": ["READ"]
+           |  }]
+           |}""".stripMargin,
+        "Content-Type" -> "application/json"
+      )
+    )
+
   def fetchAuthToken(): String =
     await(
       post(
         authLoginHost,
         s"""{
-         |  "credId": "1234",
-         |  "affinityGroup": "Organisation",
-         |  "credentialStrength": "strong",
-         |  "enrolments": [
-         |    {
-         |      "key": "HMRC-EMCS-ORG",
-         |      "state": "Activated",
-         |      "identifiers": [{ "key": "ExciseNumber", "value": "GBWK001234569" }]
-         |    }
-         |  ]
-         |}""".stripMargin,
+           |  "credId": "1234",
+           |  "affinityGroup": "Organisation",
+           |  "credentialStrength": "strong",
+           |  "enrolments": [
+           |    {
+           |      "key": "HMRC-EMCS-ORG",
+           |      "state": "Activated",
+           |      "identifiers": [{ "key": "ExciseNumber", "value": "GBWK001234569" }]
+           |    }
+           |  ]
+           |}""".stripMargin,
         "Content-Type" -> "application/json"
       )
     ).header("Authorization")
