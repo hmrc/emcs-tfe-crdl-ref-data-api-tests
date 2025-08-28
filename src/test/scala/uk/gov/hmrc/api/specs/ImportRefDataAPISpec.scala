@@ -24,6 +24,7 @@ import uk.gov.hmrc.api.client.HttpClient
 
 class ImportRefDataAPISpec extends BaseSpec, HttpClient, BeforeAndAfterAll:
   override def beforeAll(): Unit = {
+    createInternalAuthToken()
     deleteList("codelists")
     deleteLastUpdated()
     deleteList("correspondence-lists")
