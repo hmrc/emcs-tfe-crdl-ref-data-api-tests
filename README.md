@@ -37,6 +37,9 @@ Run tests as follows:
 ```bash
 ./run-tests.sh <environment>
 ```
+## Testing End Points Manually:
+Please follow steps mentioned in the below page to test the end points manually.
+https://confluence.tools.tax.service.gov.uk/display/CRDL/QA-+Manual+Testing+Steps
 
 ## Scalafmt
 
